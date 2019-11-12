@@ -1,23 +1,26 @@
 package br.com.fiap.contas.modelo;
 
-import java.io.Serializable;
-
-public abstract class Conta implements Serializable {
+public abstract class Conta implements Comparable<Conta> {
 
 	protected double saldo;
 	private String titular;
 	private int numero;
 	private String agencia;
 
-	@Override
-	public boolean equals(Object obj) {
-
-		if (obj == null) {
-			return false;
-		}
-		Conta outraConta = (Conta) obj;
-		return this.numero == outraConta.numero && this.agencia.equals(outraConta.agencia);
+	public int compareTo(Conta outraConta) {
+		//System.out.println(outraConta.getNumero());
+		return this.titular.compareTo(outraConta.titular);
 	}
+
+//	@Override
+//	public boolean equals(Object obj) {
+//
+//		if (obj == null) {
+//			return false;
+//		}
+//		Conta outraConta = (Conta) obj;
+//		return this.numero == outraConta.numero && this.agencia.equals(outraConta.agencia);
+//	}
 
 	@Override
 	public String toString() {

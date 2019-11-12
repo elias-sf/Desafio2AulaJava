@@ -1,6 +1,10 @@
 package br.com.fiap.contas.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.fiap.contas.modelo.Banco;
+import br.com.fiap.contas.modelo.Conta;
 import br.com.fiap.contas.modelo.ContaCorrente;
 
 public class TesteBanco {
@@ -15,9 +19,17 @@ public class TesteBanco {
 			conta.setNumero(i);
 			conta.setAgencia("Agencia " + i);
 			conta.deposita(i * 1000);
-			banco.adiciona(conta);
-			banco.mostraConta();
+			if(i == 4)
+			banco.adiciona(conta, true);
+			else
+			banco.adiciona(conta, false);
 		}
+		banco.mostraConta();
+		Conta contaPesquisa = new ContaCorrente();
+		//contaPesquisa.setTitular("Titular " + 0);
+		contaPesquisa.setTitular("Titular A");
+			
+		System.out.println(banco.buscaPorTitular(contaPesquisa.getTitular()).getTitular());
 
 	}
 

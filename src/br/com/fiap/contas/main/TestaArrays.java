@@ -17,8 +17,7 @@ public class TestaArrays {
 			Conta conta = new ContaCorrente();
 			conta.deposita(i * 100.0);
 			contas[i] = conta;
-			// escreva o código para guardar a conta na posição i do array
-
+			
 		}
 		
 		List<Conta> listaContas = Arrays.asList(contas);
