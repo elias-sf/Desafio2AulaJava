@@ -1,8 +1,9 @@
-package br.com.fiap.contas.main;
+package br.com.fiap.contas.modelo;
 
 import java.util.Collection;
 
-import br.com.fiap.contas.main.Conta;
+import br.com.fiap.contas.excecao.SaldoInsuficienteException;
+import br.com.fiap.contas.modelo.Conta;
 
 public class ContaCorrente extends Conta implements Tributavel {
 
@@ -10,7 +11,10 @@ public class ContaCorrente extends Conta implements Tributavel {
 	public void saca(double valor) {
 		if(valor < 0)
 			throw new IllegalArgumentException(
-					"Valor negativo é ilegal");
+					"Valor usado para sacar é negativo");
+		
+		else if(this.saldo < valor)
+			throw new SaldoInsuficienteException("Não possui valor em conta para saque", valor);
 		else
 		this.saldo -= (valor + 0.10);
 	}

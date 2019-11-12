@@ -1,6 +1,6 @@
-package br.com.fiap.contas.main;
+package br.com.fiap.contas.modelo;
 
-import br.com.fiap.contas.main.Conta;
+import br.com.fiap.contas.modelo.Conta;
 
 public class ContaPoupanca extends Conta {
 

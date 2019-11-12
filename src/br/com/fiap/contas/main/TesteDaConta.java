@@ -1,16 +1,16 @@
-package br.com.fiap.contas.modelo;
+package br.com.fiap.contas.main;
 
-import br.com.fiap.contas.main.Conta;
-import br.com.fiap.contas.main.ContaCorrente;
-import br.com.fiap.contas.main.ContaPoupanca;
-import br.com.fiap.contas.main.SeguroDeVida;
+import br.com.fiap.contas.modelo.Conta;
+import br.com.fiap.contas.modelo.ContaCorrente;
+import br.com.fiap.contas.modelo.ContaPoupanca;
+import br.com.fiap.contas.modelo.SeguroDeVida;
 
 public class TesteDaConta {
 
 	public static void main(String[] args) {
 
 		try {
-			comecar(true);
+			comecar(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,6 +28,7 @@ public class TesteDaConta {
 		cc.setAgencia("00123");
 		cc.setNumero(123456);
 		cc.setTitular("Teste1");
+		
 		populaEscreveSeguroDeVida(cc);
 
 		cp.setSaldo(111.00);
@@ -38,13 +39,13 @@ public class TesteDaConta {
 		if (flagSaldoZero)
 			cc.deposita(0);
 		else
-			cc.deposita(1000.0);
+			cc.deposita(5600.0);
 		cc.saca(500.00);
 
 		if (flagSaldoZero)
 			cp.deposita(0);
 		else
-			cp.deposita(100.0);
+			cp.deposita(500.0);
 		cp.saca(50.00);
 
 		escreve(cc);
@@ -54,7 +55,8 @@ public class TesteDaConta {
 
 	public static void escreve(Conta obj) {
 
-		System.out.println(" ");
+		System.out.println("------------------------------------------");
+		System.out.println(obj.toString());
 		System.out.println("Saldo:" + " " + obj.getSaldo());
 		System.out.println(" ");
 		System.out.println("Agencia:" + " " + obj.getAgencia());
@@ -64,6 +66,10 @@ public class TesteDaConta {
 		System.out.println("Titular:" + " " + obj.getTitular());
 		System.out.println(" ");
 		System.out.println(obj.getTipo());
+		System.out.println(" ");
+		System.out.println("Equals:" + " " + obj.equals(obj));
+		System.out.println(" ");
+		System.out.println("------------------------------------------");
 
 		try {
 
@@ -71,7 +77,7 @@ public class TesteDaConta {
 			System.out.println("Valor do imposto:" + " " + ccTemporaria.getValorImposto());
 
 		} catch (Exception e) {
-			System.err.println("Conta Poupança não possui taxa");
+			return;
 		}
 
 	}
@@ -82,7 +88,8 @@ public class TesteDaConta {
 		sv.setNumeroApolice(25997);
 		sv.setValor(obj.getSaldo());
 
-		System.out.println("Titular Seguro de Vida:" + " " + sv.getTitular());
+		System.out.println("------------------------------------------");
+		System.out.println("Titular Seguro de Vida(Seguro de Vida):" + " " + sv.getTitular());
 		System.out.println(" ");
 		System.out.println("Numero Apolice(Seguro de Vida):" + " " + sv.getNumeroApolice());
 		System.out.println(" ");
@@ -91,6 +98,7 @@ public class TesteDaConta {
 		System.out.println("Valor do Imposto(Seguro de Vida):" + " " + sv.getValorImposto());
 		System.out.println(" ");
 		System.out.println("Tipo(Seguro de Vida):" + " " + sv.getTipo());
+		System.out.println("------------------------------------------");
 
 	}
 }
